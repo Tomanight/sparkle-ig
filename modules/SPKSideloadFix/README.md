@@ -13,8 +13,24 @@ as `NSFileManager` in app-extension processes:
 - retry app-group lookup until `LSBundleProxy` returns a usable group URL
 - fall back to a Documents-backed group path when no app-group URL is available
 - create redirected suite container directories before passing them to defaults
-- leave main-app `NSUserDefaults` on its original container so Instagram's
-  cold-launch UI dismissal flags can persist normally
+- keep main-app `NSUserDefaults` writes on their original container, so
+  Instagram's cold-launch UI dismissal flags persist normally, while also
+  mirroring app-group suites into the shared container the extensions read
+  (`GroupDefaultsMirror.xm`)
+
+The mirror exists because the notification extension boots from its app-group
+defaults. With the extension redirected to the shared container but the main app
+writing elsewhere, it found an empty plist, could not load
+`FBMobileConfigStartupConfigs`, and stalled until iOS killed it:
+
+    Extension will be killed because it used its runtime in starting up
+    Did not mutate content for notification request, will deliver original
+    content; runtime: 30.013551
+
+That produced empty lock-screen previews (content never mutated) and duplicate
+banners (Instagram's own notification dedupe, which runs in the extension, never
+executed). Mirrored writes always call through to the original container first,
+so the mirror is additive and nothing that already worked changes.
 
 It also normalizes Keychain access groups for sideloaded signatures. The four
 intercepted `SecItem` operations resolve a usable group from a sentinel Keychain

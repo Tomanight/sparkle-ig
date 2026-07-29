@@ -6,6 +6,7 @@
 #import "../../AssetUtils.h"
 #import "../../Shared/Gallery/SPKGalleryLockViewController.h"
 #import "../../Shared/Settings/SPKSettingsLockManager.h"
+#import "../../Features/Tools/SPKNotificationLog.h"
 #import "../../Shared/UI/SPKIGAlertPresenter.h"
 #import "../../Utils.h"
 #import "../SPKOnboardingViewController.h"
@@ -181,18 +182,32 @@ static NSDictionary *SPKSettingsLockSection(void) {
 #endif
     [instagramCells addObject:[SPKSetting switchCellWithTitle:@"Fix Duplicate Notifications"
                                                   defaultsKey:@"tools_fix_duplicate_notifications"]];
+    // Diagnostics for the row above. Always listed, including the reader: the
+    // duplicate only happens on a real sideload receiving real pushes, so this
+    // has to be reachable there, and hiding the reader when logging is off would
+    // hide the recording you just made.
+    [instagramCells addObject:[SPKSetting switchCellWithTitle:@"Log Notification Activity"
+                                                  defaultsKey:kSPKNotificationLogPrefKey]];
+    [instagramCells addObject:[SPKSetting navigationCellWithTitle:@"View Notification Log"
+                                                        subtitle:@""
+                                                            icon:SPKSettingsIcon(@"logs")
+                                                  viewController:[SPKNotificationLog logViewController]]];
     [instagramCells addObject:[SPKSetting switchCellWithTitle:@"Disable Safe Mode"
                                                   defaultsKey:@"tools_disable_safe_mode"]];
 
 #if SPK_DEV
     NSString *instagramFooter =
         @"1. Suppresses the Instagram Beta update popup.\n"
-        @"2. Drops the duplicate in-app banner sideloaded Instagram posts while the notification extension is already delivering the same push. Only acts while the app is foregrounded.\n"
-        @"3. Makes Instagram not reset settings after subsequent crashes. Use at your own risk.";
+        @"2. Drops the local copy sideloaded Instagram re-adds for a push the notification extension is already delivering.\n"
+        @"3. Records every notification Instagram adds, and whether it was dropped as a duplicate. This includes notification titles and message text, so leave it off unless you are chasing a problem.\n"
+        @"4. Read, share or clear what was recorded.\n"
+        @"5. Makes Instagram not reset settings after subsequent crashes. Use at your own risk.\n";
 #else
     NSString *instagramFooter =
-        @"1. Drops the duplicate in-app banner sideloaded Instagram posts while the notification extension is already delivering the same push. Only acts while the app is foregrounded.\n"
-        @"2. Makes Instagram not reset settings after subsequent crashes. Use at your own risk.";
+        @"1. Drops the local copy sideloaded Instagram re-adds for a push the notification extension is already delivering.\n"
+        @"2. Records every notification Instagram adds, and whether it was dropped as a duplicate. This includes notification titles and message text, so leave it off unless you are chasing a problem.\n"
+        @"3. Read, share or clear what was recorded.\n"
+        @"4. Makes Instagram not reset settings after subsequent crashes. Use at your own risk.\n";
 #endif
 
     [sections addObject:SPKTopicSection(@"Instagram", instagramCells, instagramFooter)];

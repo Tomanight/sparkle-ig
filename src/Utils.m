@@ -639,6 +639,7 @@ static BOOL SPKPrefIsGlobalKey(NSString *key) {
             @"tools_disable_all",
             // Notification delivery is install-wide, not per-account.
             @"tools_fix_duplicate_notifications",
+            @"tools_notification_log",
             @"app_first_run",
             @"app_safe_startup",
             @"app_startup_profiling",

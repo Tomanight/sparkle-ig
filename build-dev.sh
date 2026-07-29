@@ -33,7 +33,13 @@ else
     # contain the FFmpeg frameworks.
     pymobiledevice3 apps push $LIVECONTAINER_APPID .theos/obj/debug/Sparkle.dylib Documents/Tweaks/Sparkle
 
-    # Launch Sparkle on iPhone
+    # Launch Sparkle on iPhone. Export SPK_NOTIF=1 before running this script to
+    # forward it to the app (notification-hook diagnostic log). DEV builds record
+    # it regardless; this is for forwarding the flag to a non-DEV launch.
+    LAUNCH_ENV=()
+    if [ -n "${SPK_NOTIF:-}" ]; then
+        LAUNCH_ENV=(--env "SPK_NOTIF=$SPK_NOTIF")
+    fi
     sleep 1
-    pymobiledevice3 developer dvt launch --kill-existing --tunnel $PYMOBILEDEVICE3_UDID $DEVLAUNCHER_APPID
+    pymobiledevice3 developer dvt launch --kill-existing "${LAUNCH_ENV[@]}" --tunnel $PYMOBILEDEVICE3_UDID $DEVLAUNCHER_APPID
 fi

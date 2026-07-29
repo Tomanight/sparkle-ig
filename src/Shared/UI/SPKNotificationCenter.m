@@ -97,6 +97,7 @@ SPK_NOTIF_CONST(kSPKNotificationCopyComment, "copy_comment");
 SPK_NOTIF_CONST(kSPKNotificationCopyGIFLink, "copy_gif_link");
 SPK_NOTIF_CONST(kSPKNotificationMediaEncodingLogs, "media_encoding_logs");
 SPK_NOTIF_CONST(kSPKNotificationFlexUnavailable, "flex_unavailable");
+SPK_NOTIF_CONST(kSPKNotificationNotificationLog, "notification_log");
 #undef SPK_NOTIF_CONST
 
 NSString *const kSPKNotificationPillDurationKey = @"notifs_pill_duration";
@@ -266,6 +267,7 @@ NSArray<NSDictionary *> *SPKNotificationPreferenceSections(void) {
               SPKNotificationItem(kSPKNotificationCopyNoteText, @"Copy Note Text", @"copy"),
               SPKNotificationItem(kSPKNotificationShareLongPressCopyLink, @"Hold Send to Copy Link", @"link"),
               SPKNotificationItem(kSPKNotificationFlexUnavailable, @"FLEX Unavailable", @"warning"),
+              SPKNotificationItem(kSPKNotificationNotificationLog, @"Notification Log", @"logs"),
           ]},
     ];
 }

@@ -19,6 +19,7 @@ extern void rebindSecFuncs();
 
 extern BOOL createDirectoryIfNotExists(NSString *path);
 extern NSURL *getAppGroupPathIfExists();
+extern BOOL isAppExtensionProcess(void);
 
 @interface LSBundleProxy: NSObject
 @property(nonatomic, assign, readonly) NSDictionary *entitlements;

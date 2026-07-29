@@ -3,6 +3,24 @@
 static NSString * const SPKOriginalInstagramBundleIdentifier = @"com.burbn.instagram";
 
 static BOOL SPKIsMainBundle(NSBundle *bundle) {
+	// Never in an app extension. Inside an appex process the appex's own bundle
+	// IS the main bundle, so this used to spoof the extension's identifier too --
+	// and ExtensionFoundation derives its XPC listener name from it. The
+	// notification extension ended up listening on
+	// "com.burbn.instagram.apple-extension-service" (Operation not permitted)
+	// while SpringBoard connected to
+	// "com.burbn.instagram.notificationextension.apple-extension-service", so
+	// nothing ever answered and the extension was killed after burning its full
+	// 30 second budget:
+	//
+	//     Extension will be killed because it used its runtime in starting up
+	//     Did not mutate content ... runtime: 30.013551
+	//
+	// which meant no lock-screen previews and no Instagram-side notification
+	// dedupe (hence duplicate banners).
+	if (isAppExtensionProcess()) {
+		return NO;
+	}
 	return bundle != nil && bundle == [NSBundle mainBundle];
 }
 
@@ -55,7 +73,7 @@ static NSURL *redirectedAppGroupURL(NSString *groupIdentifier) {
 }
 %end
 
-static BOOL isAppExtensionProcess(void) {
+BOOL isAppExtensionProcess(void) {
 	static BOOL cached = NO;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{

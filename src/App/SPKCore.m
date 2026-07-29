@@ -47,6 +47,7 @@ static NSDictionary *SPKFeatureDefaults(void) {
         @"tools_hide_testflight_popup" : @(YES),
 #endif
         @"tools_fix_duplicate_notifications" : @(NO),
+        @"tools_notification_log" : @(NO),
         @"general_hold_send_copy_link" : @(YES),
         @"stories_mark_seen_on_like" : @(NO),
         @"stories_mark_seen_on_reply" : @(NO),
