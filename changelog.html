@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparkle for Instagram — Changelog</title>
+<link rel="icon" href="CydiaIcon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="CydiaIcon.png" alt="">
+    <div>
+      <h1>Changelog</h1>
+      <p class="tagline">Sparkle for Instagram</p>
+    </div>
+  </header>
+
+  <section class="rel">
+    <div class="rel-head">
+      <h2>v1.2.0</h2>
+      <span class="date">2026-08-08</span>
+      <span class="pill">Current</span>
+    </div>
+    <div class="notes">
+<h1>✨ What's new?</h1>
+<ul>
+<li>Support for Instagram version 441.0.0</li>
+</ul>
+<p><strong>Gallery</strong></p>
+<ul>
+<li>Import media into the Gallery from Files or a Regram Media Vault, with editable metadata and paste-link autofill</li>
+<li><strong>Show Files From Subfolders</strong>: browse the whole Gallery in one grid/list without opening a folder</li>
+<li>Saved posts and reels open on their own page over the Gallery, instead of resolving into the feed and costing you your place</li>
+<li>Sort, filter and scoped search (This Folder / All Folders) in the Gallery picker, plus proper empty states</li>
+<li>Pinch to zoom into videos in the full-screen preview</li>
+</ul>
+<p><strong>Editors</strong></p>
+<ul>
+<li>Crop, pan/zoom, rotate and flip a video's framing, applied in the same pass as the trim rather than a second encode</li>
+<li>Drag inside the trim selection to slide it along the timeline, and drag away from the track to scrub at 1/2, 1/4 or 1/10 speed</li>
+</ul>
+<p><strong>Instants</strong></p>
+<ul>
+<li>Upload a photo or video as an instant, from Photos, Files or the Gallery</li>
+<li>Browse the instants you've saved, grouped by person, from a new camera view button</li>
+</ul>
+<p><strong>Downloads</strong></p>
+<ul>
+<li>Auto-save stories, view-once DM media and instants to the Gallery or Photos as you view them, with per-surface allow lists</li>
+<li>Refined photo quality tiers (Max / High / Medium / Low) with 4K web fetching</li>
+<li>Save Photos-destination downloads into a custom album</li>
+</ul>
+<p><strong>Messages</strong></p>
+<ul>
+<li>Refined messages-only mode: hide the other tabs, prevent the camera swipe, and reach Settings from the inbox header</li>
+<li>See message previews by long-pressing a chat (Instagram Plus)</li>
+<li>Hide the flag button in messages</li>
+</ul>
+<p><strong>Stories</strong></p>
+<ul>
+<li>Use videos as story stickers, picked from Photos or the Sparkle Gallery</li>
+<li>Story action buttons match the native header's EDR tint on HDR content</li>
+</ul>
+<p><strong>Feed &amp; Profile</strong></p>
+<ul>
+<li>Profiles open as a real Instagram push, with Instagram's own spring animation and swipe-back from anywhere</li>
+<li>Profile Analyzer: swipe to delete a single logged change</li>
+<li>Profile Analyzer: changes group as Latest / Previous by scan boundary, so they stop moving the moment you look at them</li>
+<li>Reels action button uses HDR when needed</li>
+</ul>
+<p><strong>Interface &amp; General</strong></p>
+<ul>
+<li>See a post's date in the action button menu</li>
+<li>Reels doom-scroll and limits options are now available in global settings</li>
+</ul>
+<h1>🛠 Fixes &amp; Improvements</h1>
+<ul>
+<li>Fixed a long-standing freeze that made the whole app crawl after navigating a few screens deep</li>
+<li>Much faster Gallery: opening an item is instant, picker scrolling is smooth, and photos are no longer retained for the session</li>
+<li>Notifications on sideloaded installs arrive right away instead of up to a minute late and no longer duplicate</li>
+<li>Story preview and inbox refresh work again on the latest Instagram</li>
+<li>Instants download and auto-save at full resolution instead of a screen-sized re-encode</li>
+<li>Poll vote counts are now redacted by Hide UI on Capture</li>
+<li>Safe Mode now explains why it turned on, and offers to turn itself off</li>
+<li>Injected nav buttons now adopt the live effect from Instagram's own glass bubble instead of approximating it with a guessed tint, so they blend in far better</li>
+<li>Failed encodes report the actual reason instead of dumping the log into the pill</li>
+<li>Duplicate detection now applies to video thumbnails</li>
+<li>Expanding a story opens the item that is actually on screen</li>
+<li>The Seen button stays pinned above the composer when a GIF or sticker tray opens</li>
+<li>DM thread names resolve outside the thread view controller, so lists no longer show "Unknown Chat"</li>
+<li>Missing header button in messages-only mode on 410.1.0</li>
+<li>Keychain access groups and bundle identity normalized for duplicate app sideloading</li>
+<li>The in-app browser no longer crashes when copying text</li>
+<li>Settings import parses ZIP64 archives, so exports rezipped by macOS or Files work</li>
+<li>Various UI polish: glass button tinting, notification pill handling &amp; more</li>
+</ul>
+    </div>
+  </section>
+  <section class="rel">
+    <div class="rel-head">
+      <h2>v1.1.0</h2>
+      <span class="date">2026-07-13</span>
+    </div>
+    <div class="notes">
+<h1>✨ What's new?</h1>
+<ul>
+<li>Support for Instagram version 438.0.0</li>
+</ul>
+<p><strong>Messages</strong></p>
+<ul>
+<li>Action button for media shared in chats (download/save from the DM media viewer)</li>
+<li>Last-active timestamps in chats, with device-aware time/date formatting</li>
+<li>Auto-mark seen when you start typing</li>
+<li>Choose where the Seen button sits, and nudge it aside to peek</li>
+</ul>
+<p><strong>Stories</strong></p>
+<ul>
+<li>Search your story viewer list</li>
+<li>Peek stories without appearing on the viewer list (Instagram Plus)</li>
+<li>Hide Instagram Plus button in story viewer list</li>
+</ul>
+<p><strong>Feed &amp; Profile</strong></p>
+<ul>
+<li>Feed header shortcut to Gallery, Profile Analyzer &amp; more</li>
+<li>Subtle following indicator on profiles (icon, text or both)</li>
+<li>Clear visited profiles in Profile Analyzer, plus a polished dashboard &amp; empty states</li>
+</ul>
+<p><strong>Interface &amp; General</strong></p>
+<ul>
+<li>Metadata overlay on expanded photos</li>
+<li>Pill-shaped tab bar on iOS 18 and earlier</li>
+<li>Optional haptics when opening settings</li>
+<li>Reset any configurable settings group back to its defaults</li>
+<li>New multi-step first-run onboarding and What's New sheet</li>
+</ul>
+<h1>🛠 Fixes &amp; Improvements</h1>
+<ul>
+<li>Sharper video downloads on the default encoding preset</li>
+<li>Cleaned-up links no longer escape special characters</li>
+<li>No more duplicate comment-like confirmations</li>
+<li>Clearing download history now reclaims its storage</li>
+<li>Action buttons &amp; enhanced media resolution are on by default</li>
+<li>TestFlight popup hidden by default (toggle hidden on jailbroken installs)</li>
+<li>Reset All Settings is now scoped per account</li>
+<li>Nav buttons now appear correctly on iOS 15</li>
+<li>Menu icons render correctly on iOS 16</li>
+<li>Various UI polish: notification pill spacing, profile title clamping &amp; more</li>
+</ul>
+    </div>
+  </section>
+  <section class="rel">
+    <div class="rel-head">
+      <h2>v1.0.0</h2>
+      <span class="date">2026-07-09</span>
+    </div>
+    <div class="notes">
+<p>Initial release.</p>
+    </div>
+  </section>
+
+  <footer><a href="./">Back to the repo</a></footer>
+</div>
+</body>
+</html>
