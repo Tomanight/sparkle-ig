@@ -1,0 +1,17 @@
+Package: com.sparkle.sparkle
+Version: 1.2.0
+Architecture: iphoneos-arm64
+Maintainer: efibalogh
+Installed-Size: 36060
+Depends: mobilesubstrate
+Filename: https://github.com/efibalogh/sparkle-ig/releases/download/v1.2.0/Sparkle_v1.2.0_rootless.deb
+Size: 8895530
+MD5sum: cb06a288a0616793143e72ed51c49a1b
+SHA1: 9341668bcda5b77cbcabc54ee72fc09a548757cd
+SHA256: a947308c5f79b9bf51678fbb5c97bd6b895f6c44179f06d0e5aacbe9d2eb6815
+Section: Tweaks
+Homepage: https://github.com/efibalogh/Sparkle
+Description: Bring the spark back to Instagram!
+Author: efibalogh
+Name: Sparkle for Instagram
+

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparkle for Instagram</title>
+<meta name="description" content="Bring the spark back to Instagram.">
+<link rel="icon" href="CydiaIcon.png">
+<style>
+  :root {
+    color-scheme: light dark;
+    --tint: #8A5CF6;
+    --bg: #f6f7f9; --fg: #14161a; --muted: rgba(20,22,26,.62);
+    --card: #ffffff; --line: rgba(20,22,26,.12);
+    --code: rgba(20,22,26,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1014; --fg: #e9ebee; --muted: rgba(233,235,238,.60);
+      --card: #171a20; --line: rgba(233,235,238,.12);
+      --code: rgba(233,235,238,.08);
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.55;
+         font-family: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
+         -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 56px 20px 80px; }
+
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  header img { width: 68px; height: 68px; border-radius: 16px; flex: none;
+               box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+  h1 { font-size: 1.6rem; margin: 0; letter-spacing: -.02em; }
+  .tagline { color: var(--muted); margin: 2px 0 0; font-size: .95rem; }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+          padding: 20px; margin: 28px 0 0; }
+  .card h2 { margin: 0 0 4px; font-size: 1.05rem; letter-spacing: -.01em; }
+  .card p { margin: 0 0 16px; color: var(--muted); font-size: .9rem; }
+
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn { display: inline-block; text-decoration: none; cursor: pointer; border: 0;
+         font: inherit; font-weight: 600; font-size: .88rem; padding: 10px 15px;
+         border-radius: 10px; background: var(--tint); color: #fff;
+         transition: opacity .15s ease; }
+  .btn:hover { opacity: .85; }
+  .btn.ghost { background: transparent; border: 1px solid var(--line); color: var(--fg); }
+
+  .url { display: flex; align-items: center; gap: 10px; margin: 0 0 16px;
+         background: var(--code); border-radius: 10px; padding: 11px 13px; }
+  .url code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+              font-size: .82rem; word-break: break-all; flex: 1; }
+  .url button { flex: none; border: 0; background: transparent; color: var(--tint);
+                font: inherit; font-weight: 600; font-size: .82rem; cursor: pointer; }
+
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  td { padding: 9px 0; border-top: 1px solid var(--line); }
+  td:first-child { color: var(--muted); width: 40%; }
+  tr:first-child td { border-top: 0; }
+
+  footer { color: var(--muted); font-size: .8rem; margin-top: 40px; text-align: center; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="CydiaIcon.png" alt="">
+    <div>
+      <h1>Sparkle for Instagram</h1>
+      <p class="tagline">Bring the spark back to Instagram.</p>
+    </div>
+  </header>
+
+  <div class="card">
+    <h2>Add this repo</h2>
+    <p>Sileo, Zebra and Cydia. Rootful and rootless are both served.</p>
+    <div class="url">
+      <code id="repo-url">https://efibalogh.github.io/sparkle-ig/</code>
+      <button type="button" onclick="copyURL(this)">Copy</button>
+    </div>
+    <div class="row">
+      <a class="btn" href="sileo://source/https://efibalogh.github.io/sparkle-ig/">Sileo</a>
+      <a class="btn ghost" href="zbra://sources/add?url=https://efibalogh.github.io/sparkle-ig/">Zebra</a>
+      <a class="btn ghost" href="cydia://url/https://cydia.saurik.com/api/share#?source=https://efibalogh.github.io/sparkle-ig/">Cydia</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Current package</h2>
+    <table>
+      <tr><td>Version</td><td>1.2.0</td></tr>
+      <tr><td>Identifier</td><td>com.sparkle.sparkle</td></tr>
+      <tr><td>Architectures</td><td>rootful, rootless</td></tr>
+      <tr><td>Updated</td><td>2026-08-08</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Not jailbroken?</h2>
+    <p>Sideloadable IPAs are published on the GitHub releases page.</p>
+    <div class="row">
+      <a class="btn ghost" href="https://github.com/efibalogh/sparkle-ig/releases/latest">Latest release</a>
+      <a class="btn ghost" href="https://github.com/efibalogh/sparkle-ig">Source</a>
+    </div>
+  </div>
+
+  <footer>Packages hosted on GitHub Releases.</footer>
+</div>
+
+<script>
+function copyURL(btn) {
+  navigator.clipboard.writeText(document.getElementById('repo-url').textContent.trim())
+    .then(function () {
+      var old = btn.textContent;
+      btn.textContent = 'Copied';
+      setTimeout(function () { btn.textContent = old; }, 1400);
+    });
+}
+</script>
+</body>
+</html>
